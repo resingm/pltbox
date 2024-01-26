@@ -180,6 +180,7 @@ def hex2rgb(color: str) -> tuple:
 def rgb2hex(rgb: tuple) -> str:
     """Converts a tuple of 3 colors to a color hexstring"""
     rgb = [hex(c)[2:] for c in list(rgb)]
+    rgb = map(lambda s: s.rjust(2, "0"), rgb)
     rgb = "".join(rgb)
     return "#" + rgb
 
