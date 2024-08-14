@@ -90,6 +90,8 @@ def c_select(color_label: str, palette: dict) -> str:
 
 def n_select(n: int, palette: dict) -> list:
     """Returns a sample of colors from the given color palette."""
+    if isinstance(palette, list) or isinstance(palette, set):
+        palette = dict(enumerate(palette))
 
     colors = list(palette.values())
     n_missing = n - len(colors)
@@ -193,4 +195,3 @@ def rgb2hex(rgb: tuple) -> str:
     rgb = map(lambda s: s.rjust(2, "0"), rgb)
     rgb = "".join(rgb)
     return "#" + rgb
-
