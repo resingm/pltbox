@@ -8,6 +8,8 @@ def fig(
     cols: int,
     size_x: float = 12.0,
     size_y: float = 4.0,
+    sharex: bool = False,
+    sharey: bool = False,
     bg_color: str = "#202020",
     fg_color: str = "#ffffff",
 ) -> tuple:
@@ -26,6 +28,8 @@ def fig(
             rows,
             cols,
             figsize=(size_x, size_y),
+            sharex=sharex,
+            sharey=sharey,
             facecolor=bg[0],
     )
 
