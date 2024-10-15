@@ -16,16 +16,17 @@ def init(is_paper: bool = False):
     fg_color: str = "#ffffff"
     paper_mode = is_paper
     
-    bg = colors.n_shades_of(bg_color, 2)
-    fg = colors.n_shades_of(fg_color, 2)
+    if not paper_mode: 
+        bg = colors.n_shades_of(bg_color, 2)
+        fg = colors.n_shades_of(fg_color, 2)
 
-    # Set the default color for text in all figures
-    mpl.rcParams["text.color"] = fg[0]
-    mpl.rcParams["axes.edgecolor"] = fg[1]
-    mpl.rcParams["axes.labelcolor"] = fg[1]
-    mpl.rcParams["xtick.color"] = fg[1]
-    mpl.rcParams["ytick.color"] = fg[1]
-    mpl.rcParams["legend.facecolor"] = bg[1]
+        # Set the default color for text in all figures
+        mpl.rcParams["text.color"] = fg[0]
+        mpl.rcParams["axes.edgecolor"] = fg[1]
+        mpl.rcParams["axes.labelcolor"] = fg[1]
+        mpl.rcParams["xtick.color"] = fg[1]
+        mpl.rcParams["ytick.color"] = fg[1]
+        mpl.rcParams["legend.facecolor"] = bg[1]
     
     
 
