@@ -60,22 +60,33 @@ def fig(
     size_y: float = 4.0,
     sharex: bool = False,
     sharey: bool = False,
+    height_ratios: list = None
 ) -> tuple:
     global paper_mode, initialized, bg, fg
     
     if not initialized:
         raise Exception("Module `plots` not initialized. Call plots.init(is_paper: bool)")
+
+    height_rations = height_ratios if height_ratios else [1] * rows
     
     if paper_mode:
-        fig, ax = plt.subplots(rows, cols, figsize=(size_x, size_y), sharex=sharex, sharey=sharey)
+        fig, ax = plt.subplots(
+            rows,
+            cols,
+            figsize=(size_x, size_y),
+            sharex=sharex,
+            sharey=sharey,
+            gridspec_kw={ "height_ratios": height_ratios },
+        )
     else:
         fig, ax = plt.subplots(
-                rows,
-                cols,
-                figsize=(size_x, size_y),
-                sharex=sharex,
-                sharey=sharey,
-                facecolor=bg[0],
+            rows,
+            cols,
+            figsize=(size_x, size_y),
+            sharex=sharex,
+            sharey=sharey,
+            facecolor=bg[0],
+            gridspec_kw={ "height_ratios": height_ratios },
         )
 
     if (rows * cols) > 1:
