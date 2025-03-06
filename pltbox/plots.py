@@ -47,7 +47,7 @@ def init(is_paper: bool = False):
     mpl.rcParams["boxplot.patchartist"] = True
 
     # Define default grid styling
-    mpl.rcParams["grid.color"] = bg[1]
+    mpl.rcParams["grid.color"] = fg[1]
     mpl.rcParams["axes.grid"] = True
     mpl.rcParams["axes.grid.axis"] = "both"
     mpl.rcParams["grid.linestyle"] = "--"
