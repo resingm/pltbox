@@ -13,45 +13,47 @@ def init(is_paper: bool = False):
     global bg, fg, paper_mode, initialized
     
     initialized = True
+
     bg_color: str = "#202020"
     fg_color: str = "#ffffff"
     paper_mode = is_paper
-    
-    if not paper_mode: 
-        bg = colors.n_shades_of(bg_color, 3)
-        fg = colors.n_shades_of(fg_color, 3)
-        ac = colors.n_vibrant(7)
 
-        # Set the default color for text in all figures
-        mpl.rcParams["text.color"] = fg[0]
-        mpl.rcParams["axes.edgecolor"] = fg[1]
-        mpl.rcParams["axes.labelcolor"] = fg[1]
-        mpl.rcParams["xtick.color"] = fg[1]
-        mpl.rcParams["ytick.color"] = fg[1]
-        mpl.rcParams["legend.facecolor"] = bg[1]
+    if paper_mode:
+        bg_color, fg_color = fg_color, bg_color
+        
+    ac = colors.n_vibrant(7)
+    bg = colors.n_shades_of(bg_color, 3)
+    fg = colors.n_shades_of(fg_color, 3)
 
-        # Set the axis color cycle
-        mpl.rcParams["axes.prop_cycle"] = cycler("color", ac)
+    # Set the axis color cycle
+    mpl.rcParams["axes.prop_cycle"] = cycler("color", ac)
 
-        # Light Box Plot Styling
-        mpl.rcParams["boxplot.boxprops.color"] = fg[2]
-        mpl.rcParams["boxplot.capprops.color"] = fg[2]
-        mpl.rcParams["boxplot.flierprops.color"] = fg[2]
-        mpl.rcParams["boxplot.flierprops.markeredgecolor"] = fg[0]
-        mpl.rcParams["boxplot.medianprops.color"] = fg[2]
-        mpl.rcParams["boxplot.whiskerprops.color"] = fg[2]
-        mpl.rcParams["boxplot.vertical"] = False
-        mpl.rcParams["boxplot.patchartist"] = True
+    # Set the default color for text in all figures
+    mpl.rcParams["text.color"] = fg[0]
+    mpl.rcParams["axes.edgecolor"] = fg[1]
+    mpl.rcParams["axes.labelcolor"] = fg[1]
+    mpl.rcParams["xtick.color"] = fg[1]
+    mpl.rcParams["ytick.color"] = fg[1]
+    mpl.rcParams["legend.facecolor"] = bg[1]
 
-        # Define default grid styling
-        mpl.rcParams["axes.grid"] = True
-        mpl.rcParams["axes.grid.axis"] = "x"
-        mpl.rcParams["grid.color"] = bg[1]
-        mpl.rcParams["grid.linestyle"] = "--"
-        mpl.rcParams["grid.linewidth"] = 0.6
-        # mpl.rcParams["grid.alpha"] = 0.3
-    
-    
+    # Box Plot Styling
+    mpl.rcParams["boxplot.boxprops.color"] = fg[2]
+    mpl.rcParams["boxplot.capprops.color"] = fg[2]
+    mpl.rcParams["boxplot.flierprops.color"] = fg[2]
+    mpl.rcParams["boxplot.flierprops.markeredgecolor"] = fg[0]
+    mpl.rcParams["boxplot.medianprops.color"] = fg[2]
+    mpl.rcParams["boxplot.whiskerprops.color"] = fg[2]
+    mpl.rcParams["boxplot.vertical"] = False
+    mpl.rcParams["boxplot.patchartist"] = True
+
+    # Define default grid styling
+    mpl.rcParams["grid.color"] = bg[1]
+    mpl.rcParams["axes.grid"] = True
+    mpl.rcParams["axes.grid.axis"] = "both"
+    mpl.rcParams["grid.linestyle"] = "--"
+    mpl.rcParams["grid.linewidth"] = 0.6
+    mpl.rcParams["grid.alpha"] = 0.3
+
 
 def fig(
     rows: int,
